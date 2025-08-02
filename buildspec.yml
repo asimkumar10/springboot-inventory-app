@@ -10,14 +10,16 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - $(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 606444842969.dkr.ecr.us-east-1.amazonaws.com)
-      - REPOSITORY_URI=606444842969.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_REPO_NAME
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 606444842969.dkr.ecr.us-east-1.amazonaws.com
+      - REPOSITORY_URI=606444842969.dkr.ecr.us-east-1.amazonaws.com/springboot-inventory-app
+
   build:
     commands:
       - echo Building Spring Boot JAR...
       - mvn clean package -DskipTests
       - echo Building Docker image...
       - docker build -t $REPOSITORY_URI:$IMAGE_TAG .
+
   post_build:
     commands:
       - echo Pushing Docker image to ECR...
