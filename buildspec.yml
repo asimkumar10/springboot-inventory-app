@@ -10,8 +10,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - $(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 211125353371.dkr.ecr.us-east-1.amazonaws.com)
-      - REPOSITORY_URI=211125353371.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_REPO_NAME
+      - $(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 606444842969.dkr.ecr.us-east-1.amazonaws.com)
+      - REPOSITORY_URI=606444842969.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_REPO_NAME
   build:
     commands:
       - echo Building Spring Boot JAR...
